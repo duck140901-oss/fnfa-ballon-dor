@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FNFA Ballon d’Or | FNFA</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#050505;--card:#111;--ink:#f3ead3;--mute:#9b917a;--line:#2e2917;--gold:#c9a24b;--gold2:#ecd592;--onGold:#111;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f6f1e4;--card:#fffdf6;--ink:#17140c;--mute:#7a6f55;--line:#dccfa8;--gold:#9a7a2b;--gold2:#b8923a;--onGold:#fff}}
+:root[data-theme="light"]{--bg:#f6f1e4;--card:#fffdf6;--ink:#17140c;--mute:#7a6f55;--line:#dccfa8;--gold:#9a7a2b;--gold2:#b8923a;--onGold:#fff}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif}
+.w{max-width:1000px;margin:0 auto;padding:20px 16px 60px}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+.hd{text-align:center;padding:36px 0 18px;border-bottom:1px solid var(--line)}
+.logo{display:inline-block;background:#2a4a82;color:#fff;font-weight:700;padding:6px 12px;letter-spacing:.04em}
+.logo sup{font-size:9px}
+.hd h1{font:600 clamp(34px,8vw,64px)/1.05 'Cormorant Garamond',Georgia,serif;letter-spacing:.14em;text-transform:uppercase;margin:16px 0 6px;color:var(--gold)}
+.sm{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.yrs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:18px 0}
+button{font:inherit;cursor:pointer;background:transparent;color:var(--ink);border:1px solid var(--gold);padding:8px 16px;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
+button.on,button.g{background:var(--gold);color:var(--onGold);font-weight:600}
+button:disabled{opacity:.35;cursor:not-allowed}
+.bar{border:1px solid var(--line);padding:18px;text-align:center;margin-bottom:8px}
+.st{font:600 22px 'Cormorant Garamond',serif;letter-spacing:.12em;text-transform:uppercase;color:var(--gold2)}
+.cd{font:600 34px 'Cormorant Garamond',serif;margin-top:4px}
+h2{font:600 28px 'Cormorant Garamond',serif;letter-spacing:.12em;text-transform:uppercase;text-align:center;margin:44px 0 4px;color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin-top:18px}
+.c{background:var(--card);border:1px solid var(--line);padding:20px 14px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px}
+.c.me{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.av{width:104px;height:104px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);background:#1a1608;color:var(--gold2);display:flex;align-items:center;justify-content:center;font:600 34px 'Cormorant Garamond',serif}
+.sma{width:44px;height:44px;font-size:16px;border-width:1px;flex:none}
+.nm{font:600 22px 'Cormorant Garamond',serif;letter-spacing:.04em}
+.pos{font-size:11px;letter-spacing:.2em;color:var(--mute);text-transform:uppercase}
+.rk{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.rk .b{height:6px;background:var(--gold);margin-top:4px}
+.rk.w1 .nm{color:var(--gold2)}
+.tag{background:var(--gold);color:var(--onGold);font-size:10px;letter-spacing:.18em;padding:2px 8px;margin-left:8px;font-weight:600}
+.hof{border-top:1px solid var(--line);padding:12px 0;display:grid;grid-template-columns:70px 1fr;gap:10px}
+.hof b{font:600 24px 'Cormorant Garamond',serif;color:var(--gold)}
+.adm{border:1px dashed var(--gold);padding:16px;margin-top:40px}
+input,select{font:inherit;background:var(--card);color:var(--ink);border:1px solid var(--line);padding:8px;width:100%}
+.f{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:10px 0}
+label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));background:var(--gold);color:var(--onGold);padding:10px 18px;display:none;z-index:9}
+.authbox{border:1px solid var(--line);padding:16px;margin:24px 0;background:var(--card)}
+.note{font-size:12px;color:var(--mute);margin:8px 0}
+.actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.error{color:#e58d8d;font-size:13px;margin-top:8px}
+.success{color:#a9d6a0;font-size:13px;margin-top:8px}
+.smallbtn{padding:6px 10px;font-size:10px}
+.adm input,.adm select{margin-top:5px}</style></head><body>
+<div class="w"><div class="hd"><span class="logo">FNFA<sup>®</sup></span><h1>FNFA Awards</h1><div class="sm">Federation NITEX Football Association</div></div>
+<div id="app"></div></div><div id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/*
+  FNFA Ballon d'Or
+  Frontend connected to the separate FNFA Awards Supabase project.
+  Only the public/anon key belongs in browser code. Never add a service_role key.
+*/
+const SUPABASE_URL = 'https://ixolkjygcqjvtqjqygpt.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml4b2xranlnY3FqdnRxanF5Z3B0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM1NDAyOTksImV4cCI6MjEwOTExNjI5OX0.Sh0RIWZIkyFalcTWpmJneoKDJwfkQPyU3tH7rEXq8_4';
+const STORAGE_BUCKET = 'fnfa-awards';
+const TEAMS = ['Virgil Abloh','Jerry Lorenzo'];
+const POS = ['ST','CM','CB','GK'];
+let sb=null, user=null, admin=false, editions=[], categories=[], candidates=[], winners=[], resultRows=[];
+let selectedYear=null, voterName='', voterTeam='', browserId='', live=false, photoFile=null, busy=false;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toast(m){const e=$('toast');e.textContent=m;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',3000)}
+function errorText(err){return err?.message||String(err||'Something went wrong')}
+function dhakaDate(v){if(!v)return '';const d=new Date(v);const p=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Dhaka',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(d).reduce((a,x)=>(a[x.type]=x.value,a),{});return `${p.year}-${p.month}-${p.day}T${p.hour}:${p.minute}`}
+function dhakaLabel(v){if(!v)return 'Not scheduled';return new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dhaka',day:'2-digit',month:'short',year:'numeric',hour:'numeric',minute:'2-digit',hour12:true}).format(new Date(v))+' (Dhaka)'}
+function localDhakaToISO(v){if(!v)return null;return new Date(v+':00+06:00').toISOString()}
+function stateOf(e){const now=Date.now(),s=e.voting_start?new Date(e.voting_start).getTime():null,en=e.voting_end?new Date(e.voting_end).getTime():null;if(e.status==='draft')return 'draft';if(e.status==='completed'||e.status==='closed')return 'closed';if(s!==null&&now<s)return 'soon';if(en!==null&&now>en)return 'closed';return e.status==='open'?'open':'closed'}
+function currentEdition(){return editions.find(e=>e.year===selectedYear)||null}
+function catBySlug(slug){return categories.find(c=>c.slug===slug)}
+function candidatesFor(catId){return candidates.filter(c=>c.category_id===catId&&c.is_active!==false)}
+function uuid(){if(window.crypto?.randomUUID)return crypto.randomUUID();return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0;return(c==='x'?r:(r&3|8)).toString(16)})}
+function getBrowserId(){let id=localStorage.getItem('fnfa_awards_browser_id');if(!id){id=uuid();localStorage.setItem('fnfa_awards_browser_id',id)}return id}
+function avatar(p,small=false){const cl='av'+(small?' sma':'');return p.photo_url?`<img class="${cl}" src="${esc(p.photo_url)}" alt="">`:`<div class="${cl}">${esc((p.name||'?').trim().charAt(0)||'?')}</div>`}
+function candidatesInCategory(cat){return candidates.filter(c=>c.category_id===cat.id&&c.is_active!==false)}
+function rowsFor(cat){return resultRows.filter(r=>r.category_slug===cat.slug).sort((a,b)=>Number(a.candidate_rank)-Number(b.candidate_rank))}
+function renderResults(){
+  return categories.map(cat=>{
+    const rows=rowsFor(cat);
+    const max=Math.max(1,...rows.map(r=>Number(r.vote_count)||0));
+    const items=rows.length?rows.map(r=>`
+      <div class="rk ${Number(r.candidate_rank)===1?'w1':''}">
+        ${avatar({name:r.candidate_name,photo_url:r.photo_url},true)}
+        <div style="flex:1">
+          <div class="nm">${esc(r.candidate_name)}${Number(r.vote_count)>0&&Number(r.candidate_rank)===1?'<span class="tag">'+(live?'LEADING':'TOP VOTE')+'</span>':''}</div>
+          <div class="pos">${esc(r.candidate_position||'')}</div>
+          <div class="b" style="width:${Math.round((Number(r.vote_count)||0)/max*100)}%"></div>
+        </div>
+        <div class="nm">${Number(r.vote_count)||0}<div class="pos">votes</div></div>
+      </div>`).join(''):'<div class="sm" style="text-align:center">No candidates or votes yet</div>';
+    return `<h2>${esc(cat.name)}</h2><div class="sm" style="text-align:center;margin-bottom:12px">${esc(cat.description||'')}</div>${items}`;
+  }).join('');
+}
+function renderHallOfFame(){const rows=winners.filter(w=>!w.is_demo);const years=[...new Set(rows.map(w=>editions.find(e=>e.id===w.edition_id)?.year).filter(Boolean))].sort((a,b)=>b-a);if(!years.length)return '';return `<h2>Hall of Fame</h2>`+years.map(y=>{const ed=editions.find(e=>e.year===y);const ww=rows.filter(w=>w.edition_id===ed?.id);return `<div class="hof"><b>${y}</b><div>${categories.map(cat=>{const w=ww.find(x=>x.category_id===cat.id);return `<div style="display:flex;align-items:center;gap:10px;margin:8px 0"><span class="pos">${esc(cat.description||cat.name)}</span>${w?avatar({name:w.winner_name,photo_url:w.photo_url},true):''}<span class="nm" style="font-size:18px">${w?esc(w.winner_name):'-'}</span></div>`}).join('')}</div></div>`}).join('')}
+function renderCandidateCard(c,e,isOpen){const already=!!window.votedCats?.has(c.category_id);return `<div class="c">${avatar({name:c.name,photo_url:c.photo_url})}<div class="nm">${esc(c.name)}</div><div class="pos">${esc(c.position||'')}</div>${isOpen?(!voterName||!voterTeam?'<span class="pos">Enter your name and team first</span>':already?'<span class="tag" style="margin:0">CATEGORY VOTED ✓</span>':`<button class="g" data-a="vote" data-id="${c.id}" data-cat="${c.category_id}">Vote</button>`):''}</div>`}
+function voterPanel(isOpen){if(!isOpen)return '';return `<div class="bar"><label>Voter details · One vote per category</label><div class="f"><input id="voter-name" maxlength="100" placeholder="Enter your full name" value="${esc(voterName)}"><select id="voter-team"><option value="">Select your team</option>${TEAMS.map(t=>`<option value="${t}" ${voterTeam===t?'selected':''}>${t}</option>`).join('')}</select><button class="g" data-a="save-voter">Continue</button></div><div class="note">Your name and selected team will be saved with your votes. One vote is allowed per category on this browser.</div>${voterName&&voterTeam?`<div class="sm">Voting as ${esc(voterName)} · ${esc(voterTeam)}</div>`:''}</div>`}
+function adminLogin(){if(admin)return '';return `<div class="authbox"><div class="serif" style="font-size:24px;color:var(--gold)">ADMIN SIGN IN</div><div class="note">Only authorized FNFA administrators can manage editions and candidates.</div><div class="f"><input id="admin-email" type="email" autocomplete="username" placeholder="Admin email"><input id="admin-password" type="password" autocomplete="current-password" placeholder="Password"><button class="g" data-a="login">Sign in</button></div><div id="auth-message" class="note"></div></div>`}
+function adminPanel(e){return `<div class="adm"><div class="serif" style="font-size:24px;color:var(--gold)">ADMIN PANEL</div><div class="note">Signed in as ${esc(user?.email||'admin')} · <button class="smallbtn" data-a="logout">Sign out</button></div>
+<h3 class="serif" style="color:var(--gold)">Edition settings</h3>
+<div class="f"><div><label>Year</label><input id="ed-year" type="number" min="2026" value="${e?.year||2027}"></div><div><label>Voting starts (Dhaka)</label><input id="ed-start" type="datetime-local" value="${dhakaDate(e?.voting_start)}"></div><div><label>Voting ends (Dhaka)</label><input id="ed-end" type="datetime-local" value="${dhakaDate(e?.voting_end)}"></div><div><label>Status</label><select id="ed-status">${['draft','open','closed','completed'].map(x=>`<option value="${x}" ${e?.status===x?'selected':''}>${x.toUpperCase()}</option>`).join('')}</select></div></div>
+<label><input id="ed-published" type="checkbox" style="width:auto" ${e?.is_published?'checked':''}> Publish this edition (publicly visible)</label><p><button class="g" data-a="save-edition">Save edition</button> ${e?`<button data-a="toggle-live">${live?'Hide':'Show'} live tally</button>`:''}</p>
+${e?`<h3 class="serif" style="color:var(--gold)">Add candidate to ${e.year}</h3><div class="f"><div><label>Candidate name</label><input id="candidate-name" maxlength="100"></div><div><label>Category</label><select id="candidate-category">${categories.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('')}</select></div><div><label>Team</label><select id="candidate-team">${TEAMS.map(t=>`<option value="${t}">${t}</option>`).join('')}</select></div><div><label>Position</label><select id="candidate-position">${POS.map(p=>`<option>${p}</option>`).join('')}</select></div><div><label>Photo</label><input id="candidate-photo" type="file" accept="image/*"></div></div><button class="g" data-a="add-candidate">Add candidate</button>
+<div style="margin-top:18px">${candidates.filter(c=>c.edition_id===e.id).map(c=>`<div class="rk">${avatar({name:c.name,photo_url:c.photo_url},true)}<div style="flex:1"><b>${esc(c.name)}</b><div class="pos">${esc(c.position||'')} · ${esc(categories.find(x=>x.id===c.category_id)?.name||'')}</div></div><button class="smallbtn" data-a="remove-candidate" data-id="${c.id}">${c.is_active?'Deactivate':'Inactive'}</button><label class="smallbtn" style="cursor:pointer;border:1px solid var(--line);padding:6px 10px">Photo<input type="file" accept="image/*" data-a="update-candidate-photo" data-id="${c.id}" style="display:none"></label></div>`).join('')}</div>
+<h3 class="serif" style="color:var(--gold);margin-top:28px">${e.year} Hall of Fame · Winner details</h3><div class="note">Winner information can be added later. Leave fields empty until the official winners are confirmed.</div>
+${categories.map(cat=>{const w=winners.find(x=>x.category_id===cat.id&&!x.is_demo);return `<div class="rk" style="display:block"><b>${esc(cat.name)}</b><div class="f" style="margin-top:10px"><div><label>Winner name</label><input id="winner-name-${cat.id}" maxlength="100" value="${esc(w?.winner_name||'')}" placeholder="Enter official winner name"></div><div><label>Team</label><select id="winner-team-${cat.id}"><option value="">Select team (optional)</option>${TEAMS.map(t=>`<option value="${t}" ${w?.team===t?'selected':''}>${t}</option>`).join('')}</select></div><div><label>Winner photo</label><input id="winner-photo-${cat.id}" type="file" accept="image/*"></div></div><button class="g" style="margin-top:8px" data-a="save-winner" data-cat="${cat.id}">Save winner</button></div>`}).join('')}`:''}</div>`}
+function render(){const app=$('app');if(!sb){app.innerHTML='<p class="error">Supabase connection could not start. Please refresh the page.</p>';return}const e=currentEdition();let html='';
+if(editions.length)html+=`<div class="yrs">${editions.map(x=>`<button class="${x.year===selectedYear?'on':''}" data-a="year" data-year="${x.year}">${x.year}</button>`).join('')}</div>`;
+if(!e){html+='<p class="sm" style="text-align:center;margin:40px 0">No published award edition is available yet.</p>'}
+else{const state=stateOf(e);html+=`<div class="bar"><div class="st">${state==='soon'?'Voting opens soon':state==='open'?'Voting is open':state==='draft'?'Edition not published':'Voting closed · Results'}</div><div class="sm" style="margin-top:6px">Start: ${dhakaLabel(e.voting_start)}<br>End: ${dhakaLabel(e.voting_end)}</div></div>`;
+if(state==='open')html+=voterPanel(true);
+if(state==='closed'||(admin&&live)){html+=renderResults()}
+if(state==='open'||state==='soon'){html+=categories.map(cat=>`<h2>${esc(cat.name)}</h2><div class="sm" style="text-align:center">${esc(cat.description||'')}</div><div class="grid">${candidatesInCategory(cat).filter(c=>c.edition_id===e.id).map(c=>renderCandidateCard(c,e,state==='open')).join('')||'<span class="sm">No candidates yet</span>'}</div>`).join('')}
+}
+html+=renderHallOfFame();
+if(admin)html+=adminPanel(e);
+else html+=adminLogin();
+$('app').innerHTML=html;
+}
+async function loadData(){const [er,cr]=await Promise.all([sb.from('award_editions').select('*').order('year',{ascending:false}),sb.from('categories').select('*').order('display_order',{ascending:true})]);if(er.error)throw er.error;if(cr.error)throw cr.error;editions=er.data||[];categories=cr.data||[];if(selectedYear===null&&editions.length)selectedYear=editions[0].year;await loadEditionData();render()}
+async function loadEditionData(){const e=currentEdition();candidates=[];winners=[];resultRows=[];window.votedCats=new Set();if(!e)return;const [ca,wi]=await Promise.all([sb.from('candidates').select('*').eq('edition_id',e.id).order('created_at',{ascending:true}),sb.from('award_winners').select('*').eq('edition_id',e.id)]);if(ca.error)throw ca.error;if(wi.error)throw wi.error;candidates=ca.data||[];winners=wi.data||[];
+const state=stateOf(e);if(state==='closed'||(admin&&live)){const {data,error}=await sb.rpc('get_fnfa_vote_results',{p_edition_year:e.year});if(error)throw error;resultRows=data||[]}
+
+}
+async function verifyAdmin(session){user=session?.user||null;admin=false;if(user){const {data,error}=await sb.from('admin_users').select('user_id,is_active').eq('user_id',user.id).maybeSingle();admin=!error&&!!data&&data.is_active===true;if(!admin){await sb.auth.signOut();user=null}}}
+async function uploadPhoto(file,editionYear,categoryId){if(!file)return null;if(!file.type.startsWith('image/'))throw new Error('Please select an image file');if(file.size>5*1024*1024)throw new Error('Image must be smaller than 5 MB');const ext=(file.name.split('.').pop()||'jpg').toLowerCase().replace(/[^a-z0-9]/g,'')||'jpg';const path=`${editionYear}/${categoryId}/${uuid()}.${ext}`;const {error}=await sb.storage.from(STORAGE_BUCKET).upload(path,file,{upsert:false,contentType:file.type});if(error)throw error;const {data}=sb.storage.from(STORAGE_BUCKET).getPublicUrl(path);return data.publicUrl}
+async function refresh(){await loadData()}
+async function handleAction(a,b){if(busy)return;try{
+if(a==='year'){selectedYear=Number(b.dataset.year);live=false;await loadEditionData();render();return}
+if(a==='save-voter'){const n=$('voter-name').value.trim(),t=$('voter-team').value;if(n.length<2||n.length>100)return toast('Enter a name between 2 and 100 characters');if(!TEAMS.includes(t))return toast('Select your team');voterName=n;voterTeam=t;localStorage.setItem('fnfa_awards_voter_name',n);localStorage.setItem('fnfa_awards_voter_team',t);render();toast('Voter details saved');return}
+if(a==='vote'){const e=currentEdition();if(!e||stateOf(e)!=='open')return toast('Voting is not open');if(!voterName||!voterTeam)return toast('Enter your name and team first');busy=true;b.disabled=true;const {data,error}=await sb.rpc('submit_fnfa_vote',{p_browser_id:browserId,p_voter_name:voterName,p_team:voterTeam,p_edition_year:e.year,p_category_slug:catBySlug(categories.find(c=>c.id===b.dataset.cat)?.slug||'')?.slug||categories.find(c=>c.id===b.dataset.cat)?.slug,p_candidate_id:b.dataset.id});if(error)throw error;toast(data?.message||'Vote submitted');window.votedCats=window.votedCats||new Set();window.votedCats.add(b.dataset.cat);await loadEditionData();window.votedCats.add(b.dataset.cat);render();busy=false;return}
+if(a==='login'){const email=$('admin-email').value.trim(),password=$('admin-password').value;if(!email||!password)return toast('Enter admin email and password');busy=true;const {data,error}=await sb.auth.signInWithPassword({email,password});if(error)throw error;await verifyAdmin(data.session);if(!admin){toast('This account does not have FNFA admin access');return}await refresh();toast('Admin signed in');busy=false;return}
+if(a==='logout'){await sb.auth.signOut();user=null;admin=false;live=false;await refresh();toast('Signed out');return}
+if(!admin)return toast('Admin access required');
+if(a==='toggle-live'){live=!live;await loadEditionData();render();return}
+if(a==='save-edition'){const year=Number($('ed-year').value),start=localDhakaToISO($('ed-start').value),end=localDhakaToISO($('ed-end').value),status=$('ed-status').value,published=$('ed-published').checked;if(!Number.isInteger(year)||year<2026)return toast('Enter a valid edition year');if(start&&end&&new Date(end)<=new Date(start))return toast('End time must be after start time');const existing=editions.find(x=>x.year===year);const payload={year,title:`FNFA Ballon d'Or ${year}`,status,is_published:published,voting_start:start,voting_end:end};let q=existing?sb.from('award_editions').update(payload).eq('id',existing.id):sb.from('award_editions').insert(payload);const {error}=await q;if(error)throw error;selectedYear=year;await refresh();toast('Edition saved');return}
+if(a==='add-candidate'){const e=currentEdition(),name=$('candidate-name').value.trim(),categoryId=$('candidate-category').value,team=$('candidate-team').value,position=$('candidate-position').value,file=$('candidate-photo').files[0];if(!e)return toast('Select an edition first');if(name.length<2)return toast('Enter candidate name');busy=true;let photo_url=null;if(file)photo_url=await uploadPhoto(file,e.year,categoryId);const {error}=await sb.from('candidates').insert({edition_id:e.id,category_id:categoryId,name,team,position,photo_url,is_active:true});if(error)throw error;await loadEditionData();render();toast('Candidate added');busy=false;return}
+if(a==='remove-candidate'){const c=candidates.find(x=>x.id===b.dataset.id);if(!c)return;const {error}=await sb.from('candidates').update({is_active:false}).eq('id',c.id);if(error)throw error;await loadEditionData();render();toast('Candidate deactivated');return}
+if(a==='save-winner'){const e=currentEdition(),categoryId=b.dataset.cat,cat=categories.find(x=>x.id===categoryId),name=$('winner-name-'+categoryId).value.trim(),team=$('winner-team-'+categoryId).value||null,file=$('winner-photo-'+categoryId).files[0],existing=winners.find(x=>x.category_id===categoryId&&!x.is_demo);if(!e||!cat)return toast('Edition or category not found');if(name.length<2)return toast('Enter the official winner name');busy=true;let photo_url=existing?.photo_url||null;if(file)photo_url=await uploadPhoto(file,e.year,categoryId);const {error}=await sb.from('award_winners').upsert({edition_id:e.id,category_id:categoryId,winner_name:name,team,photo_url,is_demo:false},{onConflict:'edition_id,category_id'});if(error)throw error;await loadEditionData();render();toast('Winner saved');busy=false;return}
+}catch(err){busy=false;console.error(err);toast(errorText(err))}
+}
+document.addEventListener('click',ev=>{const b=ev.target.closest('button[data-a]');if(b)handleAction(b.dataset.a,b)});
+document.addEventListener('change',async ev=>{const el=ev.target;if(el.dataset.a!=='update-candidate-photo'||!el.files?.[0]||!admin)return;try{const c=candidates.find(x=>x.id===el.dataset.id);if(!c)return;const e=editions.find(x=>x.id===c.edition_id);const url=await uploadPhoto(el.files[0],e.year,c.category_id);const {error}=await sb.from('candidates').update({photo_url:url}).eq('id',c.id);if(error)throw error;await loadEditionData();render();toast('Candidate photo updated')}catch(err){console.error(err);toast(errorText(err))}});
+document.addEventListener('keydown',ev=>{if(ev.key==='Enter'&&ev.target.id==='admin-password'){const b=document.querySelector('button[data-a="login"]');if(b)handleAction('login',b)}});
+async function init(){try{if(!window.supabase?.createClient)throw new Error('Supabase library did not load');sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);browserId=getBrowserId();voterName=localStorage.getItem('fnfa_awards_voter_name')||'';voterTeam=localStorage.getItem('fnfa_awards_voter_team')||'';const {data:{session}}=await sb.auth.getSession();await verifyAdmin(session);sb.auth.onAuthStateChange(async(_event,s)=>{setTimeout(async()=>{await verifyAdmin(s);try{await refresh()}catch(e){console.error(e);toast(errorText(e))}},0)});await loadData()}catch(err){console.error(err);$('app').innerHTML=`<p class="error">Could not load FNFA Awards: ${esc(errorText(err))}</p>`}}
+init();
+</script></body></html>
