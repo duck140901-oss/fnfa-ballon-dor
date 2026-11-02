@@ -130,7 +130,7 @@ if(!e){html+='<p class="sm" style="text-align:center;margin:40px 0">No published
 else{const state=stateOf(e);html+=`<div class="bar"><div class="st">${state==='soon'?'Voting opens soon':state==='open'?'Voting is open':state==='draft'?'Edition not published':'Voting closed · Results'}</div><div class="sm" style="margin-top:6px">Start: ${dhakaLabel(e.voting_start)}<br>End: ${dhakaLabel(e.voting_end)}</div></div>`;
 if(state==='open')html+=voterPanel(true);
 if(e.year>=2027&&(state==='closed'||state==='completed'||(admin&&live))){html+=renderResults()}
-if(state==='open'||state==='soon'){html+=categories.map(cat=>`<h2>${esc(cat.name)}</h2><div class="sm" style="text-align:center">${esc(cat.description||'')}</div><div class="grid">${candidatesInCategory(cat).filter(c=>c.edition_id===e.id).map(c=>renderCandidateCard(c,e,state==='open')).join('')||'<span class="sm">No candidates yet</span>'}</div>`).join('')}
+if(state!=='draft'){html+=categories.map(cat=>`<h2>${esc(cat.name)}</h2><div class="sm" style="text-align:center">${esc(cat.description||'')}</div><div class="grid">${candidatesInCategory(cat).filter(c=>c.edition_id===e.id).map(c=>renderCandidateCard(c,e,state==='open')).join('')||'<span class="sm">No candidates yet</span>'}</div>`).join('')}
 }
 html+=renderHallOfFame();if(window.selectedPlayerId){const pc=candidates.find(x=>x.id===window.selectedPlayerId);if(pc)html+=renderPlayerModal(pc)}
 if(admin)html+=adminPanel(e);
