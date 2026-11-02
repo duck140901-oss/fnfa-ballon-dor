@@ -128,7 +128,7 @@ if(editions.length)html+=`<div class="yrs">${editions.map(x=>`<button class="${x
 if(!e){html+='<p class="sm" style="text-align:center;margin:40px 0">No published award edition is available yet.</p>'}
 else{const state=stateOf(e);html+=`<div class="bar"><div class="st">${state==='soon'?'Voting opens soon':state==='open'?'Voting is open':state==='draft'?'Edition not published':'Voting closed · Results'}</div><div class="sm" style="margin-top:6px">Start: ${dhakaLabel(e.voting_start)}<br>End: ${dhakaLabel(e.voting_end)}</div></div>`;
 if(state==='open')html+=voterPanel(true);
-if(state==='closed'||(admin&&live)){html+=renderResults()}
+if(e.year>=2027&&(state==='closed'||state==='completed'||(admin&&live))){html+=renderResults()}
 if(state==='open'||state==='soon'){html+=categories.map(cat=>`<h2>${esc(cat.name)}</h2><div class="sm" style="text-align:center">${esc(cat.description||'')}</div><div class="grid">${candidatesInCategory(cat).filter(c=>c.edition_id===e.id).map(c=>renderCandidateCard(c,e,state==='open')).join('')||'<span class="sm">No candidates yet</span>'}</div>`).join('')}
 }
 html+=renderHallOfFame();
@@ -137,8 +137,8 @@ else html+=adminLogin();
 $('app').innerHTML=html;
 }
 async function loadData(){const [er,cr]=await Promise.all([sb.from('award_editions').select('*').order('year',{ascending:false}),sb.from('categories').select('*').order('display_order',{ascending:true})]);if(er.error)throw er.error;if(cr.error)throw cr.error;editions=er.data||[];categories=cr.data||[];if(selectedYear===null&&editions.length)selectedYear=editions[0].year;await loadEditionData();render()}
-async function loadEditionData(){const e=currentEdition();candidates=[];winners=[];resultRows=[];window.votedCats=new Set();if(!e)return;const [ca,wi]=await Promise.all([sb.from('candidates').select('*').eq('edition_id',e.id).order('created_at',{ascending:true}),sb.from('award_winners').select('*').eq('edition_id',e.id)]);if(ca.error)throw ca.error;if(wi.error)throw wi.error;candidates=ca.data||[];winners=wi.data||[];
-const state=stateOf(e);if(state==='closed'||(admin&&live)){const {data,error}=await sb.rpc('get_fnfa_vote_results',{p_edition_year:e.year});if(error)throw error;resultRows=data||[]}
+async function loadEditionData(){const e=currentEdition();candidates=[];winners=[];resultRows=[];window.votedCats=new Set();if(!e)return;const [ca,wi]=await Promise.all([sb.from('candidates').select('*').eq('edition_id',e.id).order('created_at',{ascending:true}),sb.from('award_winners').select('*')]);if(ca.error)throw ca.error;if(wi.error)throw wi.error;candidates=ca.data||[];winners=wi.data||[];
+const state=stateOf(e);if(e.year>=2027&&(state==='closed'||state==='completed'||(admin&&live))){const {data,error}=await sb.rpc('get_fnfa_vote_results',{p_edition_year:e.year});if(error)throw error;resultRows=data||[]
 
 }
 async function verifyAdmin(session){user=session?.user||null;admin=false;if(user){const {data,error}=await sb.from('admin_users').select('user_id,is_active').eq('user_id',user.id).maybeSingle();admin=!error&&!!data&&data.is_active===true;if(!admin){await sb.auth.signOut();user=null}}}
